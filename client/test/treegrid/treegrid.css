@@ -1,0 +1,102 @@
+
+.table{
+    width: 100%;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+.table tr td{
+    height: 16px;
+    border-bottom: solid 1px #0054d2;
+    border-right: solid 1px #0054d2;
+    text-indent:3px;
+}
+
+.table tr.head td{
+    background: url(bo01.gif);
+    color: #fff;
+}
+
+.table td.row_start{
+   width:10px; 
+   background: url(03.gif);
+}
+
+.table tr.select td{
+    background: #84eb92;
+}
+
+.table tr.select td.row_start{
+   background: url(03_select.gif);
+}
+
+.table tr td.child_panel{
+    padding: 16px 0;
+    border-right: 0;
+    background: url(line03.gif) 5px -14px no-repeat;
+}
+
+.table .child_panel table.table tr.head td{
+    background: url(head02.gif);
+}
+
+
+.table .child_panel table.table tr.head td{
+    border-right: solid 1px #04CED6;
+    border-bottom: solid 1px #04CED6;
+}
+
+.table tr td.first, .table .child_panel table.table tr.head td.first{
+    width: 15px;
+    border: 0;
+}
+
+.table tr td.first{
+    background: url(line01.gif) 5px 0px no-repeat;
+}
+
+.table tr.head td.first{
+    background: none;
+}
+
+.table tr td.child_panel_first{
+    background: url(line03.gif) 5px 0;
+    background-repeat: repeat-y;
+}
+
+.table .child_panel table.table tr.head td.first{
+    background: url(line03.gif) 5px -1px no-repeat;
+}
+
+.table tr td.last_row_td{
+    background: url(line02.gif) 5px 0 no-repeat;
+}
+
+.table .first .plus, .table .first .minus{
+    background: url(plus.gif);
+    width: 10px;
+    height: 10px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.table .first .minus{
+    background: url(minus.gif);
+}
+
+.table tr td.last_child_panel{
+    padding-top: 16px;
+    padding-bottom: 0;
+    border-bottom: solid 0px #0054d2;
+}
+
+.table tr td.last_child_panel_first{
+    background: none;
+}
+
+
+
+
+
+
+

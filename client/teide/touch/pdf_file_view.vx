@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+  
+	<views>
+    
+    <teide.touch.PDFFileView>
+      
+      <table border="0" cellPadding="0" cellSpacing="0" style="width: 100%; height: 100%">
+        <tr>
+          <td style="text-align: center;">
+            <te:Button 
+              value="查看文档" 
+              style="padding-left: 20px; padding-right: 20px;" 
+              onclick="m_openPDF_handle" />
+          </td>
+        </tr>
+      </table>
+    
+    </teide.touch.PDFFileView>
+	</views>
+</tesla>

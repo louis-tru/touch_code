@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+
+		<style>
+		  
+      .input {
+		    border-radius: 5px;
+		    border: 1px solid #cccccc;
+		    background-color: #fff;
+        /*height: 20px;*/
+        height: 18px;
+        padding: 5px 26px 5px 5px;
+        position: relative;
+        cursor: text;
+        text-align: left;
+        font-size: 14px;
+        overflow: hidden;
+      }
+      
+      .input input{
+        position: relative;
+        padding: 0;
+        margin: 0;
+        appearance: none;
+        background: transparent;
+        border-width: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        /*font-size: 16px;*/
+        font-size: 14px;
+        color: inherit;
+        text-align: inherit;
+        line-height: initial;
+      }
+      
+      .input .clear{
+        background: url(data:image/png;base64,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);
+        background-position: center center;
+        /*background-size: 18px;*/
+        /*width: 36px;*/
+        background-size: 14px;
+        width: 30px;
+        height: 100%;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: 0;
+        right: -2px;
+        cursor: default;
+      }
+      
+      .input #desc_div {
+        position: absolute;
+        display: block;
+        line-height: initial;
+        color: #aaa;
+        top: 2px;
+        bottom: 2px;
+        left: 5px;
+        right: 26px;
+      }
+      
+      .input #desc_div table {
+        position: relative;
+        top: 1px;
+      }
+      
+      .input .clear:active{
+        opacity: 0.5;
+      }
+      
+		</style>
+		
+	</head>
+
+	<views>
+	  
+	  <Input app="teide.touch.Input" class="input">
+	    <div id="desc_div">
+  	    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; height: 100%"><tr>
+  	      <td id="desc_text"></td>
+  	    </tr></table>
+	    </div>
+      <input type="text" id="input" autocorrect="off" autocapitalize="off" _autofocus="autofocus" />
+      <div class="clear" onclick="clear" id="clear_btn" />
+	  </Input>
+    
+	</views>
+
+</tesla>
+
+

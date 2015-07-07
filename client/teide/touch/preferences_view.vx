@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+  
+  <head>
+    <res>
+      <img src="teide/touch/res/icon/arrow4.png" />
+      <img src="teide/touch/res/icon/arrow5.png" />
+    </res>
+    
+    <style>
+      
+      .preferences{ 
+        background: #F1F1F1;
+        overflow-scrolling: touch;
+        overflow-y : auto;
+        overflow-x : hidden;
+      }
+      
+      .preferences .scroll{
+        width: 100%; 
+        min-height: 101%;
+        /*overflow-scrolling: touch;
+        overflow-y : auto;
+        overflow-x : hidden;*/
+      }
+      
+      .preferences .p_title{
+        padding: 20px 25px 5px;
+        text-align: center;
+        font-size: 18px;
+      }
+      
+      .preferences .info{
+        padding: 5px 25px 5px;
+        font-size: 12px;
+        color: #aaa;
+      }
+      
+      .preferences .panel{
+        margin: 10px; 
+        border: solid 1px #ddd; 
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .preferences .panel > div{
+        padding: 0 15px; 
+        height: 48px; 
+        line-height: 50px; 
+        border-bottom: solid 1px #ddd;
+        background: #fff;
+        overflow: hidden;
+      }
+      
+      .preferences .panel > div .loading_inl {
+        display: none;
+        white-space: pre;
+        padding-left: 11px;
+        text-align: right;
+        float: right;
+      }
+      
+      .preferences .panel > div .text {
+        float: right;
+        color: #8F8F8F;
+        margin-right: 0px;
+      }
+      
+      .preferences .panel > div .text2 {
+        padding-right: 10px; 
+        <!--line-height: 50px;-->
+      }
+      
+      .preferences .panel > div.arrow {
+        background-image: url(teide/touch/res/icon/arrow5.png);
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        background-position: right;
+        padding-right: 35px;
+      }
+      
+      .preferences.fine .panel{
+        border-width: 0.5px;
+      }
+      
+      .preferences.fine .panel > div{
+        border-bottom-width: 0.5px;
+      }
+      
+      .preferences .panel > div:last-child{
+        border-bottom: 0;
+      }
+      
+      .preferences .panel > div > input, 
+      .preferences .panel > div > select{
+        float: right; 
+        margin-top: 16px;
+      }
+      
+      .preferences .panel > div.action {
+        
+      }
+      
+      .preferences .panel > div.action:active {
+        background-color: #ddd;
+      }
+      
+      .preferences .panel > div.loading {
+        pointer-events: none;
+      }
+      
+      .preferences .panel > div.loading .loading_inl {
+        display: inline;
+      }
+      
+      .preferences .check{
+        float: right; 
+        margin-top: 9px;
+        line-height: 0px
+      }
+      
+      .preferences .num{
+        float: right; 
+        margin-top: 9px;
+        line-height: 0px
+      }
+      
+      .preferences .select{
+        
+      }
+      
+      .preferences .select:active{
+        background: #ddd;
+      }
+      
+      .preferences .select .inl{
+        box-align: center;
+        float: right;
+      }
+      
+      .preferences .select #theme_value{
+        margin-right: 18px;
+        <!--color: #1E1E1E;-->
+        color: #8F8F8F;
+        font-size: 14px;
+      }
+      
+      .preferences .select .arrow {
+        float: right;
+        transform: translateX(-3px) translateY(7px) rotateZ(90deg);
+        color: #696969;
+        line-height: 18px;
+        font-size: 18px;
+        background: url(teide/touch/res/icon/arrow5.png);
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        width: 18px;
+        height: 30px;
+      }
+
+      .preferences #editor_container{
+        <!--height: 200px;-->
+        display: block;
+      }
+      
+      .select_theme {
+         <!--opacity: 0.6;-->
+      }
+      
+      .select_theme div {
+        padding-left: 25px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      
+      .select_theme div.dark{
+        background: #444;
+        border-bottom: solid 1px #fff;
+        color: #fff;
+      }
+      
+      .select_theme div.dark:active{
+        background: #000;
+      }
+      
+      .select_theme div.title{
+        padding-left: 12px;
+        color: #666;
+      }
+      
+      .select_theme div.title:active{
+        background: #fff;
+      }
+      
+      .select_theme_scroll_panel {
+        overflow : hidden;
+        border-radius: 8px;
+      }
+      
+      .select_theme_scroll {
+        overflow-scrolling: touch;
+        overflow-y : auto;
+        overflow-x : hidden;
+      }
+      
+      .preferences #introducer_count {
+        display: inline-block;
+      }
+      
+      .preferences .ani {
+        display: inline-block;
+        animation: loading_introducer_count 1s linear infinite;
+      }
+      
+      @keyframes loading_introducer_count{
+        from { transform: rotateZ(0); }
+        to {transform: rotateZ(360deg);}
+      }
+      
+      .preferences .introducer_table {
+        line-height: 48px; 
+        width: 100%;
+      }
+      
+      .preferences .introducer_table_td0 {
+        white-space: nowrap; 
+        padding-right: 10px;
+      }
+      
+      .preferences .introducer_table_td1 {
+        width: 100%;
+      }
+      
+      .preferences #introducer_id_input {
+        text-align: center; 
+        display: none;
+        border: 0;
+        color: #8F8F8F;
+        height: 24px;
+      }
+      
+      .preferences .disable_events {
+        pointer-events: none;
+      }
+
+      .preferences #act_lite_x_panel{
+        display: none;
+      }
+      
+    </style>
+    
+  </head>
+  
+	<views>
+    
+    <teide.touch.PreferencesView class="preferences">
+      
+      <!-- <te:ScrollView class="scroll" id="inl"> -->
+      <te:Control class="scroll" id="inl">
+        
+        <div class="p_title">{@Preferences Settings}</div>
+        
+        <div class="panel">
+          <div class="action arrow" onclick="m_my_id_click_handle">
+            {@我的ID} 
+            <span class="text" id="my_id" />
+          </div>
+          
+          <div class="action arrow" id="introducer_panel" 
+            onclick="m_introducer_panel_click_handle">
+            <table class="introducer_table" border="0" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="introducer_table_td0">{@推荐人ID}</td>
+                <td class="introducer_table_td1">
+                  <span class="loading_inl"><span class="ani">-</span></span>
+                  <span class="text" id="introducer_id_text"></span>
+                  <te:Input id="introducer_id_input" 
+                    desc="{@输入ID}"
+                    max_length="12"
+                    fontSize="16" 
+                    onesc="m_introducer_init_status"
+                    onblur="m_introducer_init_status"
+                    onenter="m_introducer_input_enter_handle" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!--introducer end-->
+        </div>
+        <div class="info">{@注意: 推荐人ID设置后不能更改}</div>
+        
+        <div id="act_lite_x_panel">
+          <div class="panel">
+            <div>
+              {@激活全部功能} 
+              <te:Checkbox onchange="m_act_all_func_handle" 
+                id="act_all_func_ch" class="check" />
+              <span class="text text2">
+                <span id="share_count" class="">0</span><span style="padding:0 4px;">/</span>5
+              </span>
+            </div>
+          </div>
+          <!--The software to share with five friends and install, you can free use all functional-->
+          <div class="info">{@将此软件推荐给5个好友并安装,便可免费拥有全部功能}</div>
+        </div>
+        
+        <div class="panel">
+          <div>
+            {@自动换行} 
+            <te:Checkbox onchange="m_auto_line_handle" 
+              id="auto_line_ch" class="check" />
+          </div>
+          <div>
+            {@显示行号} 
+            <te:Checkbox onchange="m_line_number_handle" 
+              id="line_number_ch" class="check" />
+          </div>
+          <div>
+            {@显示制表符} 
+            <te:Checkbox onchange="m_invisibles_handle" 
+              id="invisibles_ch" class="check" />
+          </div>
+          <div>
+            {@显示缩进向导} 
+            <te:Checkbox onchange="m_indent_guides_handle" 
+              id="indent_guides_ch" class="check" />
+          </div>
+        </div>
+        <!--Turning this switch, touch the code editor immediately exhaled the soft keyboard-->
+        <div class="info">{@打开此开关,触摸代码编辑器可立即弹出软键盘}</div>
+        <div class="panel">
+          <div>
+            {@触摸焦点} 
+            <te:Checkbox onchange="m_auto_touch_focus_hand" 
+              id="touch_focus_ch" class="check" />
+          </div>
+          <div>
+            {@缩进宽度} 
+            <te:NumberRoller onchange="m_indent_width_handle" 
+              id="indent_width_num" min="1" max="8" class="num" />
+          </div>
+          <div>
+            {@字体大小} 
+            <te:NumberRoller onchange="m_font_size_handle" id="font_size_num" 
+              min="12" max="26" class="num" format="{0}px" />
+          </div>
+        </div>
+        
+        <!--For up to 30 several themed selection-->
+        <div class="info">{@可供多达30多种主题风格的选择}</div>
+        <div class="panel">
+          <div class="select" onclick="m_select_theme_handle">
+            {@主题}
+            <div class="inl">
+              <span id="theme_value" />
+              <span id="arrow" class="arrow"></span>
+            </div>
+          </div>
+          <span id="editor_container" />
+        </div>
+        
+      </te:Control>
+      <!--</te:ScrollView>-->
+    </teide.touch.PreferencesView>
+		
+    <teide.touch.SelectTheme 
+			master="teide.touch.OverlayPanel"
+			app="teide.touch.SelectTheme"
+			priority="left" opacity="1">
+		  <te:Content ContentPlaceHolderID="content">
+		    <div class="select_theme_scroll_panel">
+  		    <te:Control id="scroll" class="select_theme_scroll">
+            <te:ListTemplate id="ls" class="menu search_option select_theme">
+              <te:PageTemplate>
+                <div class="title">{@明亮}:</div>
+                <te:ItemTemplate count="16">
+                  <div onclick="m_select_click_handle" theme="{theme}" 
+                    theme_name="{caption}" 
+                    class="{class_str}">{caption}</div>
+                </te:ItemTemplate>
+                <div class="title">{@黑暗}:</div>
+                <te:ItemTemplate>
+                  <div onclick="m_select_click_handle" theme="{theme}" 
+                    theme_name="{caption}" 
+                    class="{class_str}">{caption}</div>
+                </te:ItemTemplate>
+              </te:PageTemplate>
+            </te:ListTemplate>
+          </te:Control>
+        </div>
+		  </te:Content>
+		</teide.touch.SelectTheme>
+		
+	</views>
+</tesla>

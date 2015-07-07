@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+  
+  <head>
+    <style>
+      .file_info_menu > div{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .file_info_menu .hide{
+        display: none;
+      }
+    </style>
+  </head>
+	<views>
+    
+		<teide.touch.FileInfoMenu 
+			master="teide.touch.OverlayPanel"
+			app="teide.touch.FileInfoMenu"
+			priority="left">
+		  <te:Content ContentPlaceHolderID="content">
+		    <div class="menu file_info_menu">
+          <div onclick="m_rename_click_handle">{@改名}</div>
+          <div onclick="m_clone_click_handle">{@克隆}</div>
+          <div onclick="m_delete_click_handle">{@删除}</div>
+          <div onclick="m_search_click_handle">{@搜索}</div>
+          <div onclick="m_send_click_handle" class="hide" id="send_btn">{@发送}</div>
+          <div onclick="m_decompress_click_handle" class="hide" id="decompress_btn">{@解压}</div>
+          <div onclick="m_update_click_handle" class="hide" id="update_btn">{@更新}</div>
+          <div onclick="m_join_click_handle" class="hide" id="join_btn">{@加入}</div>
+          <div onclick="m_submit_click_handle" class="hide" id="submit_btn">{@提交}</div>
+          <div onclick="m_solve_click_handle" class="hide" id="solve_btn">{@解决}</div>
+          <div onclick="m_unlock_click_handle" class="hide" id="unlock_btn">{@解锁}</div>
+          <div onclick="m_cleanup_click_handle" class="hide" id="cleanup_btn">{@清理}</div>
+        </div>
+		  </te:Content>
+		</teide.touch.FileInfoMenu>
+    
+	</views>
+
+</tesla>

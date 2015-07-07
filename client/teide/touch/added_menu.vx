@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+
+		<style>
+		  		  
+		  .menu {
+		    font-size: 16px;
+		    /*overflow: hidden;*/
+		  }
+		  
+		  .menu > *{
+		    padding: 12px 15px;
+		    border-bottom: solid 1px #E5E5E5;
+		    display: block;
+		    color: #000;
+		    text-decoration: none;
+		    cursor: default;
+		  }
+		  
+		  /*
+		  .menu > *:nth-last-child(1){
+		    border-bottom: 0;
+		  }
+		  */
+		  
+		  .menu > *:first-child{
+		    border-top-right-radius: 8px;
+		    border-top-left-radius: 8px;
+		  }
+		  
+		  .menu > *:last-child{
+		    border-bottom: 0;
+		    border-bottom-right-radius: 8px;
+		    border-bottom-left-radius: 8px;
+		  }
+		  
+		  .menu > *:active{
+		    background: #EAEAEA;
+		  }
+		  
+		  .overlay #inl.fine .menu > * {
+		    border-bottom: solid 0.5px #E5E5E5;
+		  }
+
+		</style>
+		
+	</head>
+  
+	<views>
+    
+		<teide.touch.AddedMenu master="teide.touch.OverlayPanel" app="teide.touch.AddedMenu">
+      <te:Content ContentPlaceHolderID="content">
+        <div class="menu">
+          <div onclick="m_add_file_click_handle">{@添加新文件}</div>
+          <div onclick="m_add_dir_click_handle">{@添加新目录}</div>
+          <div onclick="m_add_ftp_sftp_click_handle">{@添加FTP/SFTP/SVN}</div>
+          <div onclick="m_add_compress_click_handle">{@添加Zip压缩文件}</div>
+          <div onclick="m_add_ssh_remote_script_handle">{@添加SSH远程脚本}</div>
+          <div onclick="m_download_web_click_handle">{@从Web服务器下载}</div>
+          <div onclick="m_download_GitHub_handle">{@下载GitHub项目}</div>
+        </div>
+      </te:Content>
+		</teide.touch.AddedMenu>
+		
+	</views>
+  
+</tesla>

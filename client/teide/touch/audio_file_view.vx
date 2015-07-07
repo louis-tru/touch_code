@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+  
+	<views>
+    
+    <teide.touch.AudioFileView>
+      
+      <table border="0" cellPadding="0" cellSpacing="0" style="width: 100%; height: 100%">
+        <tr>
+          <td style="text-align: center;">
+            <!-- <audio id="audio" controls="on" preload="auto"> -->
+            <audio id="audio" controls="on">
+              <!--<source src="http://mooogame.com:1028/readFile/1070622201390993261128.mp3" type="audio/mpeg" />-->
+            </audio>
+          </td>
+        </tr>
+      </table>
+    
+    </teide.touch.AudioFileView>
+	</views>
+</tesla>

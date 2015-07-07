@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+  
+	  <res>
+	    <img src="teide/touch/res/icon/01.png" />
+	    <img src="teide/touch/res/icon/01-2.png" />
+	    <img src="teide/touch/res/icon/03.png" />
+	    <img src="teide/touch/res/icon/03-2.png" />
+	    <img src="teide/touch/res/icon/07.png" />
+	    <img src="teide/touch/res/icon/07-2.png" />
+	    <img src="teide/touch/res/icon/05.png" />
+	    <img src="teide/touch/res/icon/05-2.png" />
+	    <img src="teide/touch/res/icon/08.png" />
+	    <img src="teide/touch/res/icon/08-2.png" />
+	    <img src="teide/touch/res/icon/02.png" />
+	    <img src="teide/touch/res/icon/02-2.png" />
+	    <img src="teide/touch/res/icon/undo_btn.png" />
+	    <img src="teide/touch/res/icon/undo_btn-2.png" />
+	    <img src="teide/touch/res/icon/back_btn.png" />
+	    <img src="teide/touch/res/icon/back_btn-2.png" />
+			<img src="teide/touch/res/icon/more_btn-2.png" />
+			<img src="teide/touch/res/icon/more_btn.png" />
+    	<img src="teide/touch/res/icon/btnOpenSoftKeyboard_ipad.png" />
+    	<img src="teide/touch/res/icon/internet.png" />
+    	<img src="teide/touch/res/icon/internet-2.png" />
+    	<img src="teide/touch/res/icon/share_btn.png" />
+    	<img src="teide/touch/res/icon/share_btn-2.png" />
+    	<img src="teide/touch/res/icon/edit.png" />
+    	<img src="teide/touch/res/icon/edit-2.png" />
+		</res>
+		
+		<style>
+
+
+      .test_div{
+
+        width: 100px; 
+        height: 100px; 
+        background:#f00;  
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        z-index: 10000;
+      }
+
+      *,input {
+        /*font-size: 12px;*/
+      }
+      
+      *:focus{
+        outline: none;
+      }
+
+      *{
+        tap-highlight-color: rgba(0,0,0,0);
+        user-select: none;
+        touch-callout: none;
+      }
+      
+      input, textarea, select {
+        font-family: "Helvetica Neue", HelveticaNeue, "Helvetica-Neue", Helvetica, "BBAlpha Sans", sans-serif;
+        cursor: auto;
+        user-select: auto;
+        /*tap-highlight-color: auto;*/
+      }
+      
+		  body{
+		    font-family: Monaco, Menlo, 'Ubuntu Mono', 'Droid Sans Mono', 'Courier New', monospace;
+        margin: 0px;
+        color: #000;
+        cursor: default;
+        overflow: hidden;
+      }
+      
+      .main_view{
+        height: 100%;
+        background: #fff;
+      }
+      
+      #west {
+        border-right: solid 1px #8e8e93;
+        width: 320px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #fff;
+        z-index: 5;
+        transform-style: preserve-3d;
+      }
+      
+      #east {
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        transform-style: preserve-3d;
+        transform: translateX(321px);
+      }
+
+      #west > .title, #east > .title, #east_title_btns {
+        height: 44px;
+        border-bottom: solid 1px #8e8e93;
+        overflow: hidden;
+      }
+
+      #east_title_btns {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 4;
+      }
+      
+      #west > .title > div, #east > .title > div {
+        height: 100%;
+      }
+
+      #west > .title > div > div, #east > .title > div > div, #east_title_btns > div{
+        width: 49px;
+        margin: 0 2px;
+        text-align: center;
+        height: 100%;
+        float: left;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: center center;
+      }
+      
+      #east > .title > div > div, #east_title_btns > div {
+        float: right;
+      }
+      
+      #west > .title #res_btn{
+        background-image: url(teide/touch/res/icon/01.png);
+        margin-left: 4px;
+      }
+      #west > .title #res_btn:active, #west > .title #res_btn.on{
+        background-image: url(teide/touch/res/icon/01-2.png);
+      }
+      
+      #west > .title #search_btn{
+        background-image: url(teide/touch/res/icon/03.png);
+      }
+      #west > .title #search_btn:active,#west > .title #search_btn.on{
+        background-image: url(teide/touch/res/icon/03-2.png);
+      }
+      
+      #west > .title #add_btn{
+        background-image: url(teide/touch/res/icon/07.png);
+      }
+      #west > .title #add_btn:active{
+        background-image: url(teide/touch/res/icon/07-2.png);
+      }
+      
+      #west > .title #more_btn{
+        background-image: url(teide/touch/res/icon/more_btn-2.png);
+        background-size: 19px;
+      }
+      #west > .title #more_btn:active{
+        background-image: url(teide/touch/res/icon/more_btn.png);
+      }
+      
+      #west > .title #share_btn{
+        background-image: url(teide/touch/res/icon/share_btn.png);
+      }
+      #west > .title #share_btn:active{
+        background-image: url(teide/touch/res/icon/share_btn-2.png);
+      }
+      
+      #west > .title #edit0_btn{
+        background-image: url(teide/touch/res/icon/edit.png);
+        /*margin-right: 0px;*/
+        float: right;
+      }
+      #west > .title #edit0_btn:active{
+        background-image: url(teide/touch/res/icon/edit-2.png);
+      }
+      
+      #east > .title #run_btn, #east_title_btns #run_btn {
+        background-image: url(teide/touch/res/icon/05.png);
+        background-size: 25px;
+        background-position: center 9px;
+      }
+      #east > .title #run_btn:active, #east_title_btns #run_btn:active{
+        background-image: url(teide/touch/res/icon/05-2.png);
+      }
+      
+      #east > .title #run_btn.stop, #east_title_btns #run_btn.stop{
+        <!--background-image: url(teide/touch/res/icon/loading-50.png);-->
+        <!--background-repeat: no-repeat;-->
+        <!--background-size: 25px;-->
+        <!--background-position: center center;-->
+        <!--animation: loading 3s linear infinite;-->
+        background-image: url(teide/touch/res/icon/08.png);
+      }
+      #east > .title #run_btn.stop:active, #east_title_btns #run_btn.stop:active {
+        <!--background-image: url(teide/touch/res/icon/loading-50.png);-->
+        background-image: url(teide/touch/res/icon/08-2.png);
+      }
+      
+      #east > .title #internet_btn, #east_title_btns #internet_btn{
+        background-image: url(teide/touch/res/icon/internet.png); 
+        background-size: 25px;
+        background-position: center center;
+      }
+      
+      #east > .title #internet_btn:active, #east_title_btns #internet_btn:active{
+        background-image: url(teide/touch/res/icon/internet-2.png);
+      }
+      
+      #east > .title #undo_btn, #east_title_btns #undo_btn{
+        background-image: url(teide/touch/res/icon/undo_btn.png);
+        background-size: 16px;
+        background-position: center 13px;
+      }
+      
+      #east > .title #undo_btn:active, #east_title_btns #undo_btn:active{
+        background-image: url(teide/touch/res/icon/undo_btn-2.png);
+      }
+      
+      #east > .title #redo_btn, #east_title_btns #redo_btn{
+        background-image: url(teide/touch/res/icon/undo_btn.png);
+        background-size: 16px;
+        background-position: center 13px;
+        transform: scaleX(-1);
+      }
+      
+      #east > .title #redo_btn:active, #east_title_btns #redo_btn:active{
+        background-image: url(teide/touch/res/icon/undo_btn-2.png);
+      }
+      
+      #east > .title #back_btn, #east .title #back_res_btn{
+        background-image: url(teide/touch/res/icon/back_btn.png);
+        float: left;
+        display: none;
+      }
+      
+      #east > .title #back_btn{
+        margin-left: 10px;
+      }
+      
+      #east > .title #back_res_btn{
+        <!--margin-left: 10px;-->
+      }
+      
+      #east > .title #back_btn:active, #east .title #back_res_btn:active{
+        background-image: url(teide/touch/res/icon/back_btn-2.png);
+      }
+      
+      #east > .title #forward_btn{
+        background-image: url(teide/touch/res/icon/back_btn.png);
+        transform: scaleX(-1);
+        float: left;
+        display: none;
+      }
+      
+      #east > .title #forward_btn:active{
+        background-image: url(teide/touch/res/icon/back_btn-2.png);
+      }
+      
+      #east > .title #east_more_btn, #east_title_btns #east_more_btn{
+        background-image: url(teide/touch/res/icon/more_btn-2.png);
+        background-size: 19px;
+      }
+      
+      #east > .title #east_more_btn:active, #east_title_btns #east_more_btn:active{
+        background-image: url(teide/touch/res/icon/more_btn.png);
+      }
+      
+      #west > .title #edit_btn{
+        float: right;
+        padding: 14px 10px 12px 10px;
+        cursor: pointer;
+        line-height: 16px;
+        font-size: 16px;
+        display: none;
+        text-align: center;
+      }
+      
+      #west > .title #edit_btn:active{
+        color: #007aff;
+      }
+      
+      #west_content{
+        width: 100%;
+      }
+      
+      #west_content #res, #west_content #search_outer{
+        display: none;
+        width: 100%;
+        height: 100%;
+      }
+      
+      /**/
+      
+      #east > .title #toggle_btn, #east_title_btns #toggle_btn{
+        background-image: url(teide/touch/res/icon/02.png);
+        display: none;
+        margin-right: 10px;
+      }
+      
+      #east > .title #toggle_btn:active, #east > .title #toggle_btn.on,
+      #east_title_btns #toggle_btn:active, #east_title_btns #toggle_btn.on {
+        background-image: url(teide/touch/res/icon/02-2.png);
+      }
+
+      #btnOpenSoftKeyboard{
+      	display: none;
+      	position: absolute;
+      	bottom: 8px;
+      	right: 8px;
+        z-index: 4;
+        opacity: 0.4;
+      }
+
+      #btnOpenSoftKeyboard.iphone{
+      	background: url(teide/touch/res/icon/btnOpenSoftKeyboard_ipad.png);
+      	bottom: 5px;
+      	right: 5px;
+      	width: 45px;
+      	height: 44px;
+      	background-size: 45px 44px;
+      }
+      
+      <!--默认为肖像视图 portrait-->
+      #btnOpenSoftKeyboard.ipad{  
+      	background: url(teide/touch/res/icon/btnOpenSoftKeyboard_ipad.png);
+      	width: 60px;
+      	height: 60px;
+      	background-size: 60px 60px;
+      }
+      
+      <!--风景视图 landscape -->
+      #btnOpenSoftKeyboard.ipad.landscape{
+      	background: url(teide/touch/res/icon/btnOpenSoftKeyboard_ipad.png);
+      	width: 77px;
+      	height: 75px;
+      	background-size: 77px 75px;
+      }
+
+      /*iphone暂时没有风景视图*/
+      #btnOpenSoftKeyboard.iphone.landscape{
+
+      }
+      
+      #btnOpenSoftKeyboard:active{
+        opacity: 0.2;
+      }
+
+      /* 软键盘打开状态按钮样式 */
+      #btnOpenSoftKeyboard.open{
+        transform: scaleY(-1); 
+      }
+
+		</style>
+		
+	</head>
+
+	<views>
+	  
+	  <!--主视图-->
+		<teide.touch.MainViewport class="main_view">
+
+      <!--西-->
+      <div id="west" class="west">
+        <div id="west_title" class="title">
+          <span id="edit_btn" onclick="m_edit_click_handle" style="display: none">{@完成}</span>
+          
+          <div id="btns_group1">
+            <te:TitBtn id="res_btn" />
+            <te:TitBtn id="search_btn" />
+            <te:TitBtn id="add_btn" onclick="m_add_click_handle" />
+            <te:TitBtn id="share_btn" onclick="m_share_click_handle" />
+            <te:TitBtn id="more_btn" onclick="m_more_click_handle" />
+            <te:TitBtn id="edit0_btn" onclick="m_edit_click_handle" />
+          </div>
+        </div>
+        
+        <div id="west_content">
+          <te:teide.touch.ResourcesPanel id="res" class="respanel" />
+          <te:teide.touch.SearchOuterPanel id="search_outer" />
+        </div>
+        
+      </div>
+      
+      <!--东-->
+      <div id="east">
+        <div id="east_title" class="title">
+          <div>
+            <!--左-->
+            <te:TitBtn id="back_res_btn" onclick="m_back_res_click_handle" />
+            <te:TitBtn id="back_btn" disable="true" onclick="m_back_click_handle" />
+            <te:TitBtn id="forward_btn" disable="true" onclick="m_forward_click_handle" />
+          </div>
+        </div>
+        <te:teide.touch.EastContentPanel id="east_content" />
+      </div>
+
+      <div id="east_title_btns">
+        <!--右--> 
+        <te:TitBtn id="toggle_btn" onclick="m_toggle_click_handle" />
+        <te:TitBtn id="redo_btn" disable="true" onclick="m_redo_click_handle" />
+        <te:TitBtn id="undo_btn" disable="true" onclick="m_undo_click_handle" />
+        <te:TitBtn id="run_btn" disable="true" onclick="m_start_run_click_handle" />
+        <te:TitBtn id="internet_btn" onclick="m_internet_click_handle" />
+        <te:TitBtn id="east_more_btn" onclick="m_east_more_click_handle" />
+      </div>
+
+      <te:teide.touch.BtnOpenSoftKeyboard id="btnOpenSoftKeyboard" /> 
+
+		</teide.touch.MainViewport>
+		
+		<TitBtn app="teide.touch.TitBtn" />
+		
+	</views>
+
+</tesla>

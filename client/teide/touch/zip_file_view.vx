@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+  
+	<views>
+    
+    <teide.touch.ZIPFileView>
+      
+      <table border="0" cellPadding="0" cellSpacing="0" style="width: 100%; height: 100%">
+        <tr>
+          <td style="text-align: center;">
+            <te:Button 
+              value="解压"
+              style="padding-left: 40px; padding-right: 40px;" 
+              onclick="m_unzip_handle" />
+          </td>
+        </tr>
+      </table>
+    
+    </teide.touch.ZIPFileView>
+	</views>
+</tesla>

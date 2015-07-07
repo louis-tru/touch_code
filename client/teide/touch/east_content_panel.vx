@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+
+		<style>
+      
+      .east_content{
+        overflow: hidden;
+      }
+      
+		</style>
+		
+	</head>
+
+	<views>
+	  
+    <teide.touch.EastContentPanel class="east_content">
+      
+    </teide.touch.EastContentPanel>
+
+	</views>
+
+</tesla>
+
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<tesla xmlns:te="http://www.mooogame.com/">
+
+  <head>
+    <style>
+      #buy_ph_btn, #buy_pro_btn{
+        display: none;
+      }
+    </style>
+  </head>
+  
+	<views>
+
+		<teide.touch.MoreMenu master="teide.touch.OverlayPanel" app="teide.touch.MoreMenu">
+      <te:Content ContentPlaceHolderID="content">
+        <div class="menu">
+          <div onclick="m_refresh_root_click_handle">{@刷新目录}</div>
+          <div onclick="m_preferences_click_handle">{@偏好设置}</div>
+          <!--<div onclick="m_compress_click_handle">Compress File</div>-->
+          <!--<div onclick="m_decompress_click_handle">Decompress File</div>-->
+          <div onclick="m_connect_device_click_handle">{@文件服务}</div>
+          <div onclick="m_reviews_click_handle">{@评价此软件}</div>
+          <div onclick="m_buy_ph_click_handle" id="buy_ph_btn">{@购买Ph版}</div>
+          <div onclick="m_buy_pro_click_handle" id="buy_pro_btn">{@购买专业版}</div>
+          <div onclick="m_suggest_click_handle">{@提交建议与BUG}</div>
+          <div onclick="m_about_click_handle">{@关于} Touch Code</div>
+        </div>
+	    </te:Content>
+		</teide.touch.MoreMenu>
+		
+		<AboutDialog app="teide.touch.AboutDialog" 
+                  master="teide.touch.Dialog" 
+                  frail="false" 
+                  title="{@关于}">
+      <te:Content ContentPlaceHolderID="content">
+        Touch Code<br/>
+        Version <span id="ver" /><br/>
+        Author <a href="javascript:" 
+                  onclick="m_contact_author_click_handle">Louistru@live.com</a><br />
+        Copyright © 2015 Louis chu.
+      </te:Content>
+      <te:Content ContentPlaceHolderID="buttons">
+        <te:Button value="确定" type="dialog" onclick="close" />
+      </te:Content>
+    </AboutDialog>
+    
+    <teide.touch.StopAction 
+      master="teide.touch.OverlayPanel"
+      app="teide.touch.StopAction">
+      <te:Content ContentPlaceHolderID="content">
+        <div class="menu">
+          <div onclick="m_stop_action_click_handle" id="m_display_text">Stop Action</div>
+        </div>
+      </te:Content>
+    </teide.touch.StopAction>
+    
+	</views>
+
+</tesla>

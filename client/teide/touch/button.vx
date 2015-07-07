@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.miyang.com/">
+
+  <head>
+
+    <style>
+      
+    .buttons{
+      display: -webkit-box;
+      box-align: center;
+    }
+
+    /* 按钮颜色默认为蓝色 blue */
+    .button{
+      background: #fff;
+      border: solid 1px #157efb;
+      color: #157efb;
+      margin: 10px;
+      height: 32px;
+      text-align: center;
+      line-height: 32px;
+      font-size: 16px;
+      border-radius: 6px;
+      display: inline-block;
+      padding: 0 8px;
+      position: relative;
+    }
+    
+    .button:active{
+      border: solid 1px #abd1fe;
+      color: #abd1fe;
+    }
+    
+    /* red */
+    .button.red{
+      border: solid 1px #fc3e39;
+      color: #fc3e39;
+    }
+    
+    .button.red:active{
+      border: solid 1px #fed1d0;
+      color: #fed1d0;
+    }
+    
+    /* green */
+    .button.green{
+      border: solid 1px #53d769;
+      color: #53d769;
+    }
+    
+    .button.green:active{
+      border: solid 1px #cff4d5;
+      color: #cff4d5;
+    }
+    
+    .button.grey{
+      border: solid 1px #626262;
+      color: #626262;
+    }
+    
+    .button.grey:active{
+      border: solid 1px #B6B6B6;
+      color: #B6B6B6;
+    }
+    
+    .button.black{
+      border: solid 1px #000;
+      color: #000;
+    }
+    
+    .button.black:active{
+      border: solid 1px #157efb;
+      color: #157efb;
+    }
+    
+    /* 按钮种类 */
+    .button.circle{
+      height: 32px;
+      line-height: 32px;
+      border-radius: 16px;
+    }
+    
+    .button.min{
+      height: 22px;
+      line-height: 22px;
+      border-radius: 6px;
+    }
+    
+    .button.back{
+      border: 0px !important;
+      background: none;
+      <!--text-align: left;-->
+      <!--line-height: 34px;-->
+    }
+    
+    .button.back:before{
+      content: '"';
+      font-family: 'iOS7';
+      font-size: 20px;
+      line-height: 32px;
+      float: left;
+      margin-right: 6px;
+    }
+    
+    .button.dialog{
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+      border-color: #9da1a0;
+      background: none;
+      color: #157efb;
+    }
+    
+    .button.dialog:active{
+      <!--border-color: #D5D5D5;-->
+      background: #E1E4E4;
+      color: #157efb;
+    }
+    
+    .buttons .button.dialog{
+      border: 0px !important;
+      border-top: solid 1px #9da1a0 !important;
+      border-right: solid 1px #9da1a0 !important;
+      border-radius: 0px;
+      margin: 0;
+      min-width: 72px;
+    }
+    
+    .buttons .button.dialog.fine{
+      border-top: solid 0.5px #9da1a0 !important;
+      border-right: solid 0.5px #9da1a0 !important;
+    }
+    
+    .buttons .button.dialog:first-child{
+      border-bottom-left-radius: 7px;
+    }
+    
+    .buttons .button.dialog:last-child{
+      border-bottom-right-radius: 7px;
+      border-right: 0 !important;
+    }
+    
+    .buttons .button{
+      display: block;
+      box-flex: 1;
+    }
+  
+    </style>
+  </head>
+  <views>
+    
+    
+	  <!--<div class="buttons" -->
+	  <!--  style="-->
+		 <!-- background: #E5E7E7; -->
+		 <!-- margin: 10px 0; -->
+		 <!-- border-bottom-left-radius: 7px; -->
+		 <!-- border-bottom-right-radius: 7px;">-->
+	  <!--  <te:BackButton value="Back" />-->
+	  <!--  <te:Button value="OK" />-->
+	  <!--  <te:Button value="Cancel" type="circle" color="green" />-->
+	  <!--  <te:Button value="Test3" type="min" color="red" />-->
+	  <!--  <te:Button value="Cancel" type="dialog" />-->
+	  <!--  <te:Button value="YES" type="dialog" />-->
+	  <!--  <te:Button value="OK" type="dialog" />-->
+	  <!--</div>-->
+    
+    <BackButton type="back" app="teide.touch.Button" />
+    <DialogButton type="dialog" app="teide.touch.Button" />
+  </views>
+</tesla>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <script type="text/javascript">
+        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.storageInfo = window.storageInfo || window.webkitStorageInfo;
+
+        storageInfo.requestQuota(PERSISTENT, 1000 * 1024 * 1024,
+        function(grantedBytes) {
+            requestFileSystem(PERSISTENT, grantedBytes, initFS, errorHandler);
+        },
+        function(e) {
+            console.log('Error', e);
+        });
+
+
+        function initFS(fs) {
+            //
+            //debugger;
+        }
+
+
+        function errorHandler(err) {
+            var msg = 'An error occured: ';
+
+            switch (err.code) {
+            case FileError.NOT_FOUND_ERR:
+                msg += 'File or directory not found';
+                break;
+
+            case FileError.NOT_READABLE_ERR:
+                msg += 'File or directory not readable';
+                break;
+
+            case FileError.PATH_EXISTS_ERR:
+                msg += 'File or directory already exists';
+                break;
+
+            case FileError.TYPE_MISMATCH_ERR:
+                msg += 'Invalid filetype';
+                break;
+
+            default:
+                msg += 'Unknown Error';
+                break;
+            };
+
+            console.log(msg);
+        };
+        
+    </script>
+    
+    <body>
+        FileReader Test
+        <!--input type="file" onchange="handle_files(this.files)"-->
+    </body>
+
+</html>

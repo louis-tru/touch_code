@@ -1,0 +1,13 @@
+# {@请以正确的格式输入}
+# {@现在无法使用此功能}
+# {@请购买Ph版或Pro版或将此软件推荐给5个好友可免费激活}
+
+type    ssh        # {@支持ssh协议}
+host    localhost  # {@服务器域名或IP地址}
+#port    22        # {@服务端口默认ssh为22}
+user    test       # {@用户名}
+passwd  test       # {@密码}
+
+command:
+# {@此处输入命令,点击三角按钮可运行}
+echo Hello

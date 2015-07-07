@@ -1,0 +1,13 @@
+
+# touch
+teide/touch/main.js
+	teide/touch/main_viewport.js
+# 英文
+teide/touch/local/en.js		
+# 简体中文
+teide/touch/local/zh-cn.js
+# 繁体中文
+teide/touch/local/zh-tw.js
+
+# test
+# test/test_tesla_scroll_view.js

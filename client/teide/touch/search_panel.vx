@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+
+    <res>
+      <img src="teide/touch/res/icon/09.png" />
+      <img src="teide/touch/res/icon/arrow.png" />
+      <img src="teide/touch/res/icon/icon.png" />
+    </res>
+    
+		<style>
+      
+      .search{
+        width: 100%;
+        height: 100%;
+        overflow-scrolling: touch;
+        overflow : auto;
+        <!--overflow-x : hidden;-->
+      }
+      
+      .search .search_box{
+        height: 30px;
+        margin: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        <!--color: #454545;-->
+      }
+      
+      .search .line{
+        <!--border-bottom: solid 1px #ECECEC;-->
+        border-bottom: solid 1px #DBDBDB;
+      }
+      
+      .search .search_box .select_btn{
+        background: url(teide/touch/res/icon/09.png);
+        float: left;
+        width: 33px;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 25px;
+        background-position: right center;
+      }
+      
+      .search .search_box .search_btn2{
+        float: right;
+        text-align: center;
+        line-height: 30px;
+        width: 70px;
+        border-left: solid 1px #CCC;
+        color: #000;
+      }
+
+      .search .search_box .select_btn:active {
+        opacity: 0.5;
+      }
+      
+      .search .search_box .search_btn2:active {
+        color: #226BFF;
+      }
+      
+      .search .search_box .input{
+        border: 0;
+        background: none;
+        margin-left: 33px;
+        margin-right: 70px;
+      }
+      
+      .search #rep_box{
+        margin: 10px;
+        margin-bottom: 0px;
+        display: none;
+        color: #454545;
+      }
+      
+      .search .buttons > div {
+        min-width: 100px;
+      }
+      
+      /*search results*/
+      
+      .search .item{
+        overflow: hidden;
+      }
+      
+      .search .item .node{
+        <!--height: 32px;-->
+        /*width: 320px;*/
+        width: 100%;
+        line-height: 32px;
+      }
+      
+      .search .item .node:active{
+        background: #f7f7f7;
+      }
+      
+      .search .item .node .arrow{
+        width: 12px;
+        height: 12px;
+        margin-left: 8px;
+        margin-top: 10px;
+        background: url(teide/touch/res/icon/arrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position: center center;
+        float: left;
+        transform: rotateZ(90deg);
+        cursor: pointer;
+      }
+      
+      .search .item.expand .node .arrow{
+        transform: rotateZ(180deg);
+      }
+
+      .search .item .node .icon{
+        width: 26px;
+        margin-left: 4px;
+        height: 32px;
+        background: url(teide/touch/res/icon/icon.png);
+        background-repeat: no-repeat;
+        background-size: 26px;
+        background-position: center 2px;
+        float: left;
+      }
+      
+      .search .item .node .text{
+        font-size: 14px;
+        margin-left: 54px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      
+      .search .item .node .path{
+        color: #aaa;
+        font-size: 14px;
+        padding: 0 10px;
+        line-height: 14px;
+      }
+
+      .search .item .node .count{
+        float: right;
+        color: #aaa;
+        font-size: 14px;
+      }
+    
+      .search .item .results{
+        margin: 5px 0px;
+        /*width: 320px;*/
+        width: 100%;
+        display: none;
+      }
+    
+      .search .item.expand .results{
+        display: block;
+      }
+      
+      .search .item .results > div{
+        padding-left: 15px;
+      }
+      
+      .search .item .results > div > div{
+        padding: 4px 0;
+        font-size: 14px;
+        white-space: pre-wrap;
+        border-bottom: dashed 1px #D7D7D7;
+      }
+      
+      .search .item .results > div:active{
+        background: #f7f7f7;
+      }
+      
+      .search .item .results > div.on{
+        background: #EAEAEA;
+      }
+      
+      .search .item .results > div:first-child > div{
+        border-top: dashed 1px #D7D7D7;
+      }
+      
+      .search .item .results > div:last-child{
+        
+      }
+      
+      .search .item .results > div > div span{
+        background: #FFF200;
+      }
+      
+      .search #load_more_btn,.search #stop_load_btn{
+        display: none;
+      }
+      
+      .search .loading{
+        text-align: center;
+        color: #000;
+        position: relative;
+        margin-top: 10px;
+      }
+      
+      .search .loading img{
+        width: 25px;
+        position: absolute;
+        top: -2px;
+        animation: loading 3s linear infinite;
+        margin-left: 5px;
+        <!--animation-timing-function: linear;-->
+        <!--animation-iteration-count: infinite;-->
+      }
+      
+      @keyframes loading{
+        from { transform: rotateZ(0); }
+        to {transform: rotateZ(360deg);}
+      }
+      
+      /* search_option */
+      .search_option .on{
+        
+      }
+      
+      .search_option .on:after {
+        content: '3';
+        font-family: 'Pictos';
+        font-size: 1.3em;
+        text-align: right;
+        color: #157efb;
+        /* position: absolute; */
+        /* right: 12px; */
+        display: inline;
+        float: right;
+        margin-right: -30px;
+      }
+      
+      .search_option > * {
+        padding-right: 40px;
+      }
+      
+      /*search_outer*/
+      
+      .search_outer{
+        
+      }
+      
+      .search_outer #return_top_btn{
+        position: absolute;
+        <!--width: 50px;-->
+        <!--height: 50px;-->
+        bottom: 0px;
+        left: 0px;
+        <!--background: #f00;-->
+        <!--text-align: center;-->
+        <!--line-height: 50px;-->
+        <!--font-size: 16px;-->
+        display: none;
+      }
+      
+		</style>
+	</head>
+
+	<views>
+	  
+    <!--搜索控件-->
+		<teide.touch.SearchPanel class="search">
+		  
+		  <!--搜索框-->
+		  <div class="search_box">
+		    <div class="select_btn" onclick="m_select_btn_click_handle" />
+		    <div class="search_btn2" onclick="m_select2_btn_click_handle">{@搜索}</div>
+		    <te:Input id="input" onenter="m_input_entrt_handle" desc="{@搜索关键字}" />
+		  </div>
+		  
+		  <div id="rep_box">
+		    <te:Input id="rep_input" />
+		    <div class="buttons">
+		      <te:Button type="min" color="grey" value="Replace" />
+		      <te:Button type="min" color="grey" value="Replace All" />
+		    </div>
+		  </div>
+		  
+      <te:ViewDataSource 
+        id="ds" 
+        name="teide.touch.APIService" 
+        loadName="find" 
+        incrementLoad="true" 
+        autoLoad="false" />
+      
+      <te:ListTemplate id="search_result" dataSource="ds" class="file_results">
+        <te:PageTemplate>
+          <te:ItemTemplate>
+            <div id="item" class="item {expand}">
+              <div class="node" onclick="m_item_node_click_handle">
+                <div class="arrow" />
+                <div class="icon {icon}" />
+                <div class="count"><span>({count})</span></div>
+                <div class="text">{text}</div>
+                <div class="path">{path}</div>
+              </div>
+              <te:ListTemplate dataSource="{results}" class="results" path="{path}" name="{text}">
+      	        <te:PageTemplate>
+      	          <te:ItemTemplate>
+      	            <div onclick="m_result_click_handle" 
+      	              row="{row}" start="{start}" length="{length}">
+      	              <div>{html.0}<span>{html.1}</span>{html.2}</div>
+      	            </div>
+      	          </te:ItemTemplate>
+      	        </te:PageTemplate>
+      	      </te:ListTemplate>
+            </div>
+          </te:ItemTemplate>
+        </te:PageTemplate>
+        <te:LoadTemplate>
+          <div class="loading">{@正在搜索中}<img src="teide/touch/res/icon/loading-50.png" /></div>
+        </te:LoadTemplate>
+        <te:EmptyTemplate>
+          <div class="loading">{@没有找到任何匹配项}</div>
+        </te:EmptyTemplate>
+      </te:ListTemplate>
+      <div class="buttons">
+        <te:Button id="load_more_btn" value="搜索更多" onclick="m_load_more_btn_click_handle" />
+        <te:Button id="stop_load_btn" value="停止搜索" onclick="m_stop_load_btn_click_handle" />
+      </div>
+		</teide.touch.SearchPanel>
+		
+		<teide.touch.SearchOuterPanel class="search_outer">
+		  <te:teide.touch.SearchPanel id="search" />
+		  <te:Button id="return_top_btn" onclick="m_return_top_click_handle" value="TOP" />
+		</teide.touch.SearchOuterPanel>
+		
+		<SerachOption 
+		  master="teide.touch.OverlayPanel" 
+		  app="teide.touch.SerachOption">
+		  <te:Content ContentPlaceHolderID="content">
+		    <div class="menu search_option">
+		      <div id="ignoring_case_btn" onclick="m_ignoring_case_click_handle">{@忽略大小写}</div>
+		      <div id="enable_regexp_btn" onclick="m_enable_regexp_click_handle">{@启用正则表达式}</div>
+          <div id="search_all_btn" onclick="m_search_all_click_handle">{@搜索全部文件}</div>
+          <div id="search_select_btn" onclick="m_search_select_click_handle">{@搜索指定文件}</div>
+          <!--<div id="enable_hide_file_btn" onclick="m_enable_hide_file_click_handle">{@启用隐藏文件搜索}</div>-->
+          <div id="expand_all_results_btn" onclick="m_expand_all_results_click_handle">{@展开全部搜索结果}</div>
+        </div>
+		  </te:Content>
+		</SerachOption>
+		
+	</views>
+
+</tesla>

@@ -1,0 +1,11 @@
+# {@请以正确的格式输入}
+
+type   ftp          # {@支持} ftp/sftp/svn
+path   ftp://ftp.pku.edu.cn/open/web/JavaScript
+user   anonymous    # {@默认为匿名}
+passwd anonymous@   # {@密码}
+
+# example
+# path  sftp://host[:prot]/dir
+# path  svn://host[:prot]/dir
+# path  http://host[:prot]/dir

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Touch Code</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" type="image/png" href="favicon.ico" />
+  
+  <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <script type="text/javascript">
+    var require = { 
+      baseUrl: window.location.protocol + "//" + 
+        window.location.host + window.location.pathname.split("/").slice(0, -1).join("/"),
+      paths: { ace : "../third_party/ace/lib/ace" },
+      waitSeconds: 30,
+      urlArgs: "bust=1"
+      // urlArgs: "bust=" + Date.now()
+    };
+  </script>
+  <script src="../third_party/ace/demo/kitchen-sink/require.js"></script>
+  
+  <meta name="javascript-x-map" content="false" />
+  <meta name="javascript-x-dir" content="./" />
+  <meta name="javascript-x-main" content="teide/touch/main.js" />
+  <script type="text/javascript" src="tesla/tesla.js"></script>
+
+</head>
+<body>
+
+</body>
+</html>

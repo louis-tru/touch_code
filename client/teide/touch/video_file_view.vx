@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+  
+	<views>
+    
+    <teide.touch.VideoFileView>
+      
+      <table border="0" cellPadding="0" cellSpacing="0" style="width: 100%; height: 100%">
+        <tr>
+          <td style="text-align: center;">
+            
+            <video controls="on" id="video">
+              <!--<source src="http://mooogame.com:1028/readFile/BigBuck.m4v" type="video/x-m4v" />-->
+            </video>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </teide.touch.VideoFileView>
+    
+	</views>
+
+</tesla>

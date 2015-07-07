@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+	  
+	  <res>
+	    <img src="teide/touch/res/icon/arrow2.png" />
+	  </res>
+
+		<style>
+		  
+		  .overlay {
+		    position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 0.01;
+		  }
+		  
+		  .overlay #bg {
+		    background: #000;
+		    opacity: 0.1;
+		    position: absolute;
+		    z-index: 1;
+		  }
+		  
+		  .overlay #inl{
+		    position: relative;
+        border-radius: 8px;
+        background: #fff;
+        z-index: 2;
+		  }
+		  
+		  .overlay #arrow{
+		    position: absolute;
+        /*top: -13px;
+        left: 80px;*/
+        z-index: 3;
+        width: 30px;
+        height: 13px;
+        background: url(teide/touch/res/icon/arrow2.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        /*background-position: center center;*/
+		  }
+		  
+		  .overlay #inl.fine {
+		    
+		  }
+		  
+		</style>
+		
+	</head>
+
+	<views>
+	  
+    <teide.touch.OverlayPanel class="overlay" app="teide.touch.OverlayPanel">
+      <div id="bg" />
+      <div id="inl">
+        <div id="arrow" />
+        <te:ContentPlaceHolder id="content" />
+      </div>
+    </teide.touch.OverlayPanel>
+		
+	</views>
+
+</tesla>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+
+  <head>
+
+    <style>
+      
+      .inl_num_roller {
+        display: -webkit-box;
+        box-align: center;
+      }
+      
+      .inl_num_roller #val_box{
+        padding-right: 20px;
+        padding-left: 10px;
+        <!--color: #1E1E1E;-->
+        color: #8F8F8F;
+      }
+      
+      .inl_num_roller #minus, .inl_num_roller #plus{
+        width: 45px;
+        height: 28px;
+        border: solid 1px #727272;
+        text-align: center;
+        line-height: 28px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        color: #727272;
+        font-size: 18px;
+        cursor: pointer;
+        background: #fff;
+      }
+      .inl_num_roller #plus{
+        border-left: 0;
+        border-radius: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+      
+      .inl_num_roller #minus:active, .inl_num_roller #plus:active{
+        border-color: #5F6AF7;
+        color: #5F6AF7;
+      }
+      
+    </style>
+  </head>
+  <views>
+    
+    <NumberRoller app="teide.touch.NumberRoller">
+      <div id="inl" class="inl_num_roller">
+        <div id="val_box">0</div>
+        <div id="minus">-</div>
+        <div id="plus">+</div>
+      </div>
+    </NumberRoller>
+
+  </views>
+</tesla>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+
+<link  type="text/css" rel="stylesheet" href="treegrid/treegrid.css" />
+<script type="text/javascript" src="treegrid/treegrid.js"></script>
+<script type="text/javascript">
+
+    var grid = new TreeGrid(document.body);
+
+    var test_data = {
+
+        head: {
+            a: '工艺名称',
+            b: '工艺方案',
+            c: '工艺版次',
+            d: '是否有效',
+            e: '主制车间',
+            f: '最大批量',
+            g: '最小批量',
+            h: '经济批量',
+            i: '输入人员'
+        },
+        
+        data: [
+            {
+                a: 'st20a.1.1.1.1.1 2-2',
+                b: '机械加工',
+                c: '1',
+                d: '是',
+                e: '',
+                f: '1.0',
+                g: '1.0',
+                h: '1.0',
+                i: '工艺工艺， 森',
+                children: {
+                    head: {
+                        a: '工艺名称',
+                        b: '工艺方案',
+                        c: '工艺版次',
+                        d: '是否有效',
+                        e: '主制车间',
+                        f: '最大批量',
+                        g: '最小批量',
+                        h: '经济批量',
+                        i: '输入人员'
+                    },
+                    data: [
+                        {
+                            a: 'st20a.1.1.1.1.1 2-2',
+                            b: '机械加工',
+                            c: '1',
+                            d: '是',
+                            e: '',
+                            f: '1.0',
+                            g: '1.0',
+                            h: '1.0',
+                            i: '工艺工艺， 森'
+                        }
+                    ]
+                }
+            },
+            {
+                a: 'st20a.1.1.1.1.1 2-2',
+                b: '机械加工',
+                c: '1',
+                d: '是',
+                e: '',
+                f: '1.0',
+                g: '1.0',
+                h: '1.0',
+                i: '工艺工艺， 森',
+                children: null
+            },
+            {
+                a: 'st20a.1.1.1.1.1 2-2',
+                b: '机械加工',
+                c: '1',
+                d: '是',
+                e: '',
+                f: '1.0',
+                g: '1.0',
+                h: '1.0',
+                i: '工艺工艺， 森'
+            }
+        ]
+    };
+    
+    grid.loadData(test_data);
+    //grid.loadData(test_data);
+    
+    grid.onclick = function(){            // 节点点击后触发
+        debugger;
+    };
+    grid.onexpand = function(){           // 节点每次展开都会触发
+        
+    };           
+    grid.oncollapse = function(){          // 节点每次收拢都会触发
+        
+    };
+    grid.onloaddata = function(){          // 子节点在载入数据后触发
+        
+    };
+    grid.onrendernode = function(){        // 节点渲染后触发
+    };
+
+    grid.onrequest = function(evt){ // 请求数据事件, 触发该事件时可请求服务器获取数据
+
+        evt.sender.loadData(
+        {
+            head: {
+                a: '工艺名称',
+                b: '工艺方案',
+                c: '工艺版次',
+                d: '是否有效',
+                e: '主制车间',
+                f: '最大批量',
+                g: '最小批量',
+                h: '经济批量',
+                i: '输入人员'
+            },
+            data: [
+                {
+                    a: 'st20a.1.1.1.1.1 2-2',
+                    b: '机械加工',
+                    c: '1',
+                    d: '是',
+                    e: '',
+                    f: '1.0',
+                    g: '1.0',
+                    h: '1.0',
+                    i: '工艺工艺， 森'
+                },
+                {
+                    a: 'st20a.1.1.1.1.1 2-2',
+                    b: '机械加工',
+                    c: '1',
+                    d: '是',
+                    e: '',
+                    f: '1.0',
+                    g: '1.0',
+                    h: '1.0',
+                    i: '工艺工艺， 森'
+                }
+            ]
+        });
+    }
+
+</script>
+
+</body>
+</html>
+

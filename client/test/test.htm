@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="ext-4.0.7-gpl/resources/css/ext-all-gray.css">
+    <script src="ext-4.0.7-gpl/ext-all.js" type="text/javascript"></script>
+    
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+    
+    //Ext.Loader.setConfig({enabled: true});
+
+    Ext.onReady(function(){
+     
+        var contentPanel = {
+             id: 'content-panel',
+             region: 'center',
+             layout: 'card',
+             margins: '2 5 5 0',
+             activeItem: 0,
+             border: false,
+             items: [ { html: 'sssasdsadsadasdss' } ]
+        };
+         
+        var store = Ext.create('Ext.data.TreeStore', {
+            root: {
+                expanded: true
+            },
+            proxy: {
+                type: 'ajax',
+                url: 'ext-4.0.7-gpl/examples/layout-browser/tree-data.json'
+            }
+        });
+        
+        // Go ahead and create the TreePanel now so that we can use it below
+         var treePanel = Ext.create('Ext.tree.Panel', {
+            id: 'tree-panel',
+            title: 'Sample Layouts',
+            region:'north',
+            split: true,
+            height: 360,
+            minSize: 150,
+            rootVisible: false,
+            autoScroll: true,
+            animate: false,
+            store: store
+        });
+        
+        var detailsPanel = {
+            id: 'details-panel',
+            title: 'Details',
+            region: 'center',
+            bodyStyle: 'padding-bottom:15px;background:#eee;',
+            autoScroll: true,
+            html: '<p class="details-info">When you select a layout from the tree, additional details will display here.</p>'
+        };
+        
+        
+        Ext.define('Task', {
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'task',     type: 'string'},
+                {name: 'user',     type: 'string'},
+                {name: 'duration', type: 'string'}
+            ]
+        });
+    
+        var store = Ext.create('Ext.data.TreeStore', {
+            model: 'Task',
+            proxy: {
+                type: 'ajax',
+                url: 'ext-4.0.7-gpl/examples/tree/treegrid.json'
+            },
+            folderSort: true
+        });
+        
+        var tree = Ext.create('Ext.tree.Panel', {
+            region: 'center',
+            preventHeader: true,
+            rootVisible: false,
+            store: store,
+            multiSelect: true,
+            columnLines: true,
+            animate: false,
+            columns: [{
+                xtype: 'treecolumn',
+                text: 'Task',
+                flex: 2,
+                sortable: true,
+                dataIndex: 'task'
+            },{
+                xtype: 'templatecolumn',
+                text: 'Duration',
+                flex: 1,
+                sortable: true,
+                dataIndex: 'duration',
+                align: 'center',
+                tpl: Ext.create('Ext.XTemplate', '{duration:this.formatHours}', {
+                    formatHours: function(v) {
+                        if (v < 1) {
+                            return Math.round(v * 60) + ' mins';
+                        } else if (Math.floor(v) !== v) {
+                            var min = v - Math.floor(v);
+                            return Math.floor(v) + 'h ' + Math.round(min * 60) + 'm';
+                        } else {
+                            return v + ' hour' + (v === 1 ? '' : 's');
+                        }
+                    }
+                })
+            },{
+                text: 'Assigned To',
+                flex: 1,
+                dataIndex: 'user',
+                sortable: true
+            }]
+        });
+
+        Ext.create('Ext.Viewport', {
+            layout: 'border',
+            title: 'Ext Layout Browser',
+            items: [{
+                layout: 'border',
+                id: 'layout-browser',
+                region:'west',
+                border: false,
+                split:true,
+                width: 275,
+                minSize: 100,
+                maxSize: 500,
+                items: [treePanel, detailsPanel]
+            }, 
+            tree
+            ],
+            renderTo: Ext.getBody()
+        });
+    });
+
+    
+</script>
+
+</body>
+</html>

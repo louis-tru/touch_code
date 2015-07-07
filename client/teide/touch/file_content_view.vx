@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+
+	<views>
+	  
+		<FileContentViewOption 
+		  master="teide.touch.OverlayPanel" 
+		  app="teide.touch.FileContentViewOption">
+		  <te:Content ContentPlaceHolderID="content">
+		    <div class="menu search_option">
+          <div id="enable_auto_line_btn" 
+            onclick="m_enable_auto_line_click_handle">{@自动换行}</div>
+          <div id="enable_line_number_btn" 
+            onclick="m_enable_number_click_handle">{@显示行号}</div>
+          <div id="use_16_font_btn" 
+            onclick="m_use_16_font_click_handle">{@使用16号字体}</div>
+          <div id="use_2_indent_btn" 
+            onclick="m_use_2_indent_click_handle">{@使用2空格缩进}</div>
+          <div id="enable_touch_focus_btn" 
+            onclick="m_enable_touch_focus_click_handle">{@启用触摸焦点}</div>
+          <div id="fold_unfold_all_btn" 
+            onclick="m_fold_unfold_all_click_handle">{@折叠/展开全部}</div>
+        </div>
+		  </te:Content>
+		</FileContentViewOption>
+		
+	</views>
+
+</tesla>

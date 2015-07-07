@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+	  
+		<style>
+    
+      .tab_panel{
+        border-right: solid 1px #8e8e93;
+        height: 100%;
+        left: 321px;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+      }
+      
+      .tab_panel .title{
+        height: 44px;
+        border-bottom: solid 1px #8e8e93;
+        padding-right: 0px;
+      }
+      
+      .tab_panel .title .btns{
+        position: relative;
+        height: 100%;
+        margin-right: 45px;
+      }
+
+      .tab_panel .title .btn{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        overflow: hidden;
+        background:#E7E7E7;
+      }
+      
+      .tab_panel .title .btn.on{
+        background:#fff;
+      }
+      
+      .tab_panel .title .btn.more{ 
+        padding-left: 30px;
+      }
+      
+      .tab_panel .title .btn .close_btn{
+        position: absolute;
+        width: 30px;
+        height: 100%;
+        right: 0px;
+        background-image: url(teide/touch/res/icon/close_tab_btn.png);
+        background-position: center center;
+        background-size: 15px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        display: none;
+      }
+      
+      .tab_panel .title .btn.on .close_btn{
+        display: block;
+      }
+      
+      .tab_panel .title .btn .close_btn:active{
+        /*background-image: url(teide/touch/res/icon/close_tab_btn-2.png);*/
+        opacity: 0.5;
+      }
+      
+      .tab_panel .title .btn .more_btn{
+        position: absolute;
+        width: 30px;
+        height: 100%;
+        left: 0px;
+        background-image: url(teide/touch/res/icon/more_btn.png);
+        background-position: center center;
+        background-size: 19px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        display: none;
+      }
+      
+      .tab_panel .title .btn.more .more_btn{
+        display: block;
+      }
+      
+      .tab_panel .title .btn .more_btn:active{
+        opacity: 0.5;
+      }
+      
+      .tab_panel .title .btn .border_right{
+        width: 1px;
+        height: 100%;
+        background: #C0C0C0;
+        position: absolute;
+        right: 0;
+      }
+      
+      .tab_panel .title .btn .label{
+        font-size: 14px;
+        line-height: 44px;
+        text-align: center;
+        margin-left: 3px;
+        margin-right: 3px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      
+      .tab_panel .title .btn.on .label{
+        margin-right: 25px;
+      }
+      
+      .tab_panel .content{
+        overflow: hidden;
+      }
+
+      .tab_panel .title #toggle_btn{
+        width: 40px;
+        margin: 0 2px;
+        text-align: center;
+        height: 100%;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-image: url(teide/touch/res/icon/02.png);
+        background-size: 22px;
+        background-position: center 14px;
+        float: right;
+      }
+      
+      .tab_panel .title #toggle_btn:active,
+      .tab_panel .title #toggle_btn.on{
+        background-image: url(teide/touch/res/icon/02-2.png);
+      }
+
+		</style>
+		
+	</head>
+
+	<views>
+	  
+    <teide.touch.TabPanel class="tab_panel">
+      <div class="title">
+        <div id="toggle_btn" onclick="m_toggle_click_handle" />
+        <div id="btns" class="btns" />
+      </div>
+      <div id="content" class="content" />
+    </teide.touch.TabPanel>
+    
+    <teide.touch.TabButton class="btn">
+      <div id="more_btn" class="more_btn" onclick="m_more_btn_click_handle" />
+      <div id="close_btn" class="close_btn" onclick="m_close_btn_click_handle" />
+      <div class="border_right" />
+      <div id="label" class="label" />
+    </teide.touch.TabButton>
+
+	</views>
+
+</tesla>

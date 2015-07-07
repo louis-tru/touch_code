@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tesla xmlns:te="http://www.mooogame.com/">
+	<head>
+
+		<style>
+      
+      .dag {
+        font-family: "Helvetica Neue", HelveticaNeue, "Helvetica-Neue", Helvetica, "BBAlpha Sans", sans-serif;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left:0;
+        z-index: 1000;
+        display: none;
+        box-align: center;
+      }
+      
+      .dag.show{
+        display: -webkit-box;
+      }
+      
+      .dag #bg {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        transform-style: preserve-3d;
+        opacity: 0.01;
+      }
+      
+      .dag #box {
+        width: 90%;
+        min-width: 262px;
+        max-width: 380px;
+        margin: auto;
+        text-align: center;
+        position: relative;
+        transform: scale(0, 0);
+        transform-style: preserve-3d;
+        opacity: 0.01;
+        <!--background: #E1E4E4;-->
+        background: #fff;
+        border-radius: 7px;
+      }
+      
+      /*-----------------------------------------------*/
+      
+      .dag #title_box {
+        height: 24px;
+        <!--line-height: 24px;--> 
+        padding: 10px 10px 0 10px;
+        text-align: center;
+        font-size: 18px;
+        display: none;
+        margin-bottom: -10px;
+      }
+
+      .dag #content_box {
+        /*padding: 20px;*/
+        padding: 20px 10px;
+        /*font-size: 16px;*/
+        font-size: 14px;
+        <!--white-space: pre-line;-->
+        word-wrap: break-word;
+        <!--line-height: 24px;-->
+        <!--line-height: 35px;-->
+      }
+
+      .dag .buttons.hide {
+				display: none;
+      }
+      
+      .dag #prompt_text{
+        padding-bottom: 10px;
+      }
+
+		</style>
+		
+	</head>
+
+	<views>
+	  
+    <!--对话框母板控件-->
+    <teide.touch.BasicDialog class="dag" app="teide.touch.BasicDialog">
+      <div id="bg" onclick="m_bg_click_handle" />
+      <div id="box">
+        <te:ContentPlaceHolder id="content" />
+      </div>
+    </teide.touch.BasicDialog>
+
+    <teide.touch.Dialog master="teide.touch.BasicDialog" app="teide.touch.Dialog">
+      <te:Content ContentPlaceHolderID="content">
+        <div id="title_box" />
+        <div id="content_box">
+          <te:ContentPlaceHolder id="content" />
+        </div>
+        <div id="buttons_box" class="buttons">
+          <te:ContentPlaceHolder id="buttons" />
+        </div>
+      </te:Content>
+    </teide.touch.Dialog>
+    
+    <AlertDialog master="teide.touch.Dialog">
+      <te:Content ContentPlaceHolderID="content" />
+      <te:Content ContentPlaceHolderID="buttons">
+        <te:Button value="确定" type="dialog" onclick="close" />
+      </te:Content>
+    </AlertDialog>
+    
+    <ConfirmDialog master="teide.touch.Dialog">
+      <te:Content ContentPlaceHolderID="content" />
+      <te:Content ContentPlaceHolderID="buttons">
+  	    <te:Button value="取消" type="dialog" onclick="close" />
+  	    <te:Button value="确定" type="dialog" onclick="close" />
+      </te:Content>
+    </ConfirmDialog>
+    
+    <DeleteFileConfirmDialog master="teide.touch.Dialog">
+      <te:Content ContentPlaceHolderID="content" />
+      <te:Content ContentPlaceHolderID="buttons">
+  	    <te:Button value="取消" type="dialog" onclick="close" />
+  	    <te:Button value="本地" type="dialog" onclick="close" />
+        <te:Button value="全部" type="dialog" onclick="close" />
+      </te:Content>
+    </DeleteFileConfirmDialog>
+    
+    <PromptDialog master="teide.touch.Dialog">
+      <te:Content ContentPlaceHolderID="content">
+        <div id="prompt_text" />
+        <te:Input id="input" />
+      </te:Content>
+      <te:Content ContentPlaceHolderID="buttons">
+  	    <te:Button value="取消" type="dialog" onclick="close" />
+  	    <te:Button value="确定" type="dialog" onclick="close" />
+      </te:Content>
+    </PromptDialog>
+    
+    <EmptyShareDialog master="teide.touch.Dialog">
+      <te:Content ContentPlaceHolderID="content" />
+      <te:Content ContentPlaceHolderID="buttons" />
+    </EmptyShareDialog>
+  
+	  <TestDialog master="teide.touch.Dialog" title="Title">
+      <te:Content ContentPlaceHolderID="content">
+        Connected Error.
+      </te:Content>
+      <te:Content ContentPlaceHolderID="buttons">
+  	    <te:Button value="取消" type="dialog" onclick="close" />
+  	    <te:Button value="确定" type="dialog" onclick="close" />
+      </te:Content>
+    </TestDialog>
+    
+	</views>
+
+</tesla>
+
+
