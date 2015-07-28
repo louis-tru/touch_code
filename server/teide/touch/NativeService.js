@@ -92,11 +92,11 @@ function get_network_host(self){
   var ifaces = te.node.os.networkInterfaces();
   var address = '';
 
-  for(var i in ifaces){
-    if(i.match(/^eth(\d)$/)){
+  for (var i in ifaces) {
+    if (i.match(/^eth(\d)$/)) {
       address = ifaces[i][0].address;
     }
-    else if(i.match(/^en(\d)$/)){
+    else if (i.match(/^en(\d)$/)) {
       var item = ifaces[i];
       for(var j = 0; j < item.length; j++){
         if(item[j].family == 'IPv4' && !item[j].internal){

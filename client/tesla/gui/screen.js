@@ -180,13 +180,13 @@ tesla.on(global, tesla.env.mobile ? 'orientationchange': 'resize', function(evt)
   
   Screen.onchange.notice(Screen.size);
   
-  if(ts.env.ios){
+  if (ts.env.ios) {
     
-    if(timeoutid){
+    if (timeoutid) {
       Function.undelay(timeoutid);
     }
     
-    timeoutid = (function(){
+    timeoutid = (function() {
       timeoutid = 0;
       Screen.onchange.notice(Screen.size); 
     }).delay(400);

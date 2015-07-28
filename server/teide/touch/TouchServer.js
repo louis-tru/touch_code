@@ -14,14 +14,14 @@ include('teide/touch/FileActionService.js');
 // console.log(new Date().toString('yyyy-MM-dd hh:mm:ss.fff'), 'TEST 3');
 include('teide/touch/NativeService.js');
 // console.log(new Date().toString('yyyy-MM-dd hh:mm:ss.fff'), 'TEST 4');
-//include('teide/touch/test.js');
+// include('teide/touch/test.js');
 
 var native_util = null;
 var server = null;
 
-try{
+try {
   native_util = process.binding('native_util');
-}catch(err){ }
+} catch(err){ }
 
 var language = 'teide/touch/local/en.js';
 var lang = native_util ? native_util.request_get_system_language() : te.language;
@@ -60,9 +60,9 @@ Class('teide.touch.TouchServer', tesla.web.Server, {
 	  
 	  //console.log(process);
     
-		if(process.platform == 'ios' || 
+		if (process.platform == 'ios' || 
 		   process.config.variables.OS == 'ios' ||
-		   process.env.platform == 'ios'){
+		   process.env.platform == 'ios') {
 
 			this.mHasIOSNative = true;
       
@@ -80,6 +80,10 @@ Class('teide.touch.TouchServer', tesla.web.Server, {
 		  this.m_documentPath = test_documentsPath;
   		// create test dir
   		tesla.node.fsx.mkdirSync(this.m_documentPath);
+		}
+		
+		if (!te.DEBUG) {
+		  this.autoIndex = false;
 		}
 
 		var self = this;

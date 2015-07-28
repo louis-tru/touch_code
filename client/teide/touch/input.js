@@ -99,23 +99,23 @@ $class('teide.touch.Input', tesla.gui.Control, {
 	/**
 	 * @constructor
 	 */
-  Input: function(tag){
+  Input: function(tag) {
     this.Control(tag);
     tesla.EventDelegate.init_events(this, 'enter', 'esc', 'change', 'focus', 'blur');
     this.onloadview.$on(init);
   },
   
-  get fontSize(){
+  get fontSize() {
     return this.m_font_size;
   },
   
-  set fontSize(value){
+  set fontSize(value) {
     this.m_font_size = value;
     this.input.css('font-size', value + 'px');
     this.css('font-size', value + 'px');
   },
   
-  get desc(){
+  get desc() {
     return this.m_desc;
   },
   
@@ -124,51 +124,51 @@ $class('teide.touch.Input', tesla.gui.Control, {
     this.desc_text.text = value;
   },
   
-  get value(){
+  get value() {
     return this.input.value;
   },
 
 
-  set value(value){
+  set value(value) {
     this.input.value = value;
     update(this);
   },
   
-  select: function(){
+  select: function() {
     this.input.dom.select();
   },
   
-  focus: function(){
+  focus: function() {
     this.input.dom.focus();
   },
   
-  get max_length(){
+  get max_length() {
     return this.input.attr('maxlength');
   },
   
-  set max_length(value){
+  set max_length(value) {
     this.input.attr('maxlength', value);
   },
   
-  get type(){
+  get type() {
     return this.input.attr('type');
   },
 
-  set type(value){
+  set type(value) {
     this.input.attr('type', value);
   },
 
   /**
    * 失去焦点
    */
-  blur: function(){
+  blur: function() {
     this.input.dom.blur();
   },  
   
   /**
    * 清空文本
    */
-  clear: function(){
+  clear: function() {
     this.input.value = '';
     update(this);
     this.clear_btn.hide();

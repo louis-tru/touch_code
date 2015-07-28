@@ -67,10 +67,19 @@ function fileStat(self, name){
  * 名称是否为.map文件
  */
 function verify_is_map(name){
-  if(/(^|\/)\.map(\/|$)/.test(name)){
+  if (/(^|\/)\.map(\/|$)/.test(name)) {
     return true;
   }
   return false;
+}
+
+function has_error(self, entity, cb) {
+  if (entity.error) {
+    cb('Parser conf.keys file error, {0}'.format(entity.error.message));
+    return false;
+  } else {
+    return true;
+  }
 }
 
 /**
@@ -118,8 +127,7 @@ Class('teide.touch.RevisionControlService', {
     
     if (file_exists(this, name)) {
       name = name.replace(/\/?$/, fileStat(this, name).isDirectory() ? '/' : '');
-    }
-    else{
+    } else {
       name = name.replace(/\/?$/, '');
     }
     
@@ -130,19 +138,25 @@ Class('teide.touch.RevisionControlService', {
       ls.pop();
       var path = ls.join('/') + (ls.length ? '/' : '');
       var entity = mapping_entity[path];
+      var name2 = name.substr(path.length);
       if (entity) { // 查找缓存
-        return { entity: entity, name: name.substr(path.length) };
+        return { entity: entity, name: name2 };
       }
       
       var keys_path = path + '.map/conf.keys';
       
-      if(file_exists(this, keys_path)){
-        var conf = KeysDataParser.parseFile(this.documentsPath + keys_path);
+      if (file_exists(this, keys_path)) {
+        var conf = null;
+        try {
+          conf = KeysDataParser.parseFile(this.documentsPath + keys_path);
+        } catch (err) { // 解析异常
+          return { error: err, name: name2 };
+        }
         var constructor = get_constructor(conf.type);
-        if(constructor){
+        if (constructor) {
           entity = new constructor(this.documentsPath + path, conf);
           mapping_entity[path] = entity;
-          return { entity: entity, name: name.substr(path.length) };
+          return { entity: entity, name: name2 };
         }
       }
     }
@@ -153,23 +167,19 @@ Class('teide.touch.RevisionControlService', {
    * 文件状态代码
    */
   stat_code: function(name) {
-    
     var entity = this.get_revision_control(name);
-    if(entity){
-      var rev = null;
-      if(is_support_high()){
-        var code = entity.entity.stat_code(entity.name);
-        rev = { mark: code == '?' && entity.name == '' ? 'S' : code };
+    
+    if (entity) {
+      if (entity.error) { // 解析异常
+        return { mark: 'S', root: entity.name == '' };
       }
-      else{
-        rev = { mark: 'S' };
-      }
-      if(entity.name == ''){ // 根目录
+      var code = entity.entity.stat_code(entity.name);
+      var rev = { mark: code == '?' && entity.name == '' ? 'S' : code };
+      if (entity.name == '') { // 根目录
         rev.root = true;
       }
       return rev;
-    }
-    else{
+    } else {
       return { mark: 'I' };
     }
   },
@@ -179,10 +189,11 @@ Class('teide.touch.RevisionControlService', {
    */
   add: function(name, cb) {
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.add(entity.name, cb);
-    }
-    else{
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.add(entity.name, cb);
+      }
+    } else {
       cb && cb(); 
     }
   },
@@ -196,7 +207,9 @@ Class('teide.touch.RevisionControlService', {
     var new_entity = this.get_revision_control(new_name);
     var root = this.documentsPath;
     
-	  if (old_entity && new_entity && old_entity.entity === new_entity.entity) {
+	  if (old_entity && !old_entity.error &&
+	      new_entity && !new_entity.error &&
+	      old_entity.entity === new_entity.entity) {
       if (old_entity.entity.stat_code(old_entity.name) == '?') { // 文件不在控制范围
         fs.rename(root + old_name, root + new_name, cb);
       } else {
@@ -214,7 +227,7 @@ Class('teide.touch.RevisionControlService', {
   remove: function(name, cb) {
     var entity = this.get_revision_control(name);
     
-    if(entity){
+    if (entity && !entity.error) {
       entity.entity.remove(entity.name, cb);
     } else {
       var self = this;
@@ -232,10 +245,11 @@ Class('teide.touch.RevisionControlService', {
    */
   resolved: function(name, cb) {
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.resolved(entity.name, cb);
-    }
-    else{
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.resolved(entity.name, cb);
+      }
+    } else {
       cb && cb();
     }
   },
@@ -245,10 +259,9 @@ Class('teide.touch.RevisionControlService', {
    */
   conflict_list: function(path, cb) {
     var entity = this.get_revision_control(path);
-    if(entity){
+    if (entity && !entity.error) {
       entity.entity.conflict_list(entity.name, cb);
-    }
-    else{
+    } else {
       cb(null, []);
     }
   },
@@ -257,13 +270,15 @@ Class('teide.touch.RevisionControlService', {
    * 更新文件或文件夹
    */
   update: function(name, cb) {
-    if(!is_support_high()){
+    if (!is_support_high()) {
       return cb && cb({ message: $t('只有Ph与Pro版本才有此功能'), code: 109 });
     }
-
+    
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.update(entity.name, cb);
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.update(entity.name, cb);
+      }
     } else {
       cb && cb();
     }
@@ -272,16 +287,17 @@ Class('teide.touch.RevisionControlService', {
   /**
    * 将变化提交到服务器
    */
-  submit: function(name, cb){
-    if(!is_support_high()){
+  submit: function(name, cb) {
+    if (!is_support_high()) {
       return cb && cb({ message: $t('只有Ph与Pro版本才有此功能'), code: 109 });
     }
     
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.commit(entity.name, cb);
-    }
-    else{
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.commit(entity.name, cb);
+      }
+    } else {
       cb && cb();
     }
   },
@@ -290,34 +306,34 @@ Class('teide.touch.RevisionControlService', {
    * 测试当前映射是否有效
    */
   test: function(name, cb) {
-    // if(!is_support_high()){
-    //   return cb(null, false);
-    // }
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.test(cb);
-    }
-    else{
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.test(cb);
+      }
+    } else {
       cb(null, false);
     }
   },
 
   unlock: function(name, cb){
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.unlock(entity.name, cb);
-    }
-    else{
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.unlock(entity.name, cb);
+      }
+    } else {
       cb && cb();
     }
   },
 
   cleanup: function(name, cb){
     var entity = this.get_revision_control(name);
-    if(entity){
-      entity.entity.cleanup(entity.name, cb);
-    }
-    else{
+    if (entity) {
+      if (has_error(this, entity, cb)) {
+        entity.entity.cleanup(entity.name, cb);
+      }
+    } else {
       cb && cb();
     }
   },
@@ -326,7 +342,7 @@ Class('teide.touch.RevisionControlService', {
    * 释放管理器并把变更的数据保存
    */
   release: function() {
-    for(var i in this.m_mapping_entity){
+    for (var i in this.m_mapping_entity) {
       this.m_mapping_entity[i].release(); // 释放
     }
     this.cancel();
@@ -339,10 +355,10 @@ Class('teide.touch.RevisionControlService', {
     var mapping_entity = this.m_mapping_entity;
     var file_action_handle = this.m_file_action_handle;
     
-    for(var i in mapping_entity){
+    for (var i in mapping_entity) {
       mapping_entity[i].cancel(); // 取消
     }
-    for(var i in file_action_handle){
+    for (var i in file_action_handle) {
       file_action_handle[i].cancel(); // 取消
     }
     this.m_mapping_entity = { }; // 清空

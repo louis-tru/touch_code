@@ -187,13 +187,16 @@ function add_map(self){
           return;
         }
         
-        FileActionService.call('test_mapping', [dir], function(err, is){
-          if(err || !is){
+        FileActionService.call('test_mapping', [ dir ], function(err, is){
+          if (err) {
+            return Dialog.error(err.message);
+          }
+          if (!is) {
             return;
           }
-          // 连接正常
+          // TODO连接正常
           // TODO 提示用户是否要更新目录
-          Dialog.confirm('检测到您刚刚添加了映射配置,是否立即从服务器更新目录', function(is){
+          Dialog.confirm('检测到您刚刚添加了映射配置,是否立即从服务器更新目录', function(is) {
             if (is) {
               teide.touch.FileInfoMenu.updateMappingNode(node);
             }

@@ -147,7 +147,7 @@ tesla.oninsmod.on(function(evt){
       var items = _vx.views;
       var l = items.length;
 
-      for(var j = 0; j < l; j++){
+      for (var j = 0; j < l; j++) {
 	      var view = views[items[j]];
         formatView(view);
       }

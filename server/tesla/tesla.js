@@ -821,41 +821,41 @@ node [--debug] /../../tesla.js [--debug] tesla/xxx/xxx');
 	 * @static
 	 */
 	te.oninsmod = oninsmod;
-
+  
   /**
    * @event onunmod
    * @static
    */
   te.onunmod = onunmod;
- 
-  global.include = _i_nclude;
-  global.Class = global._class;
-	global.insmod = insmod;
-	global.unmod = unmod;
-
+  
+  global.include  = _i_nclude;
+  global.Class    = global._class;
+	global.insmod   = insmod;
+	global.unmod    = unmod;
+  
   _load('tesla/Extend.js');
-
+  
 	//debug status
-	if (DEBUG){
+	if (DEBUG) {
 		_load('tesla/_Debug.js');
 	}
- 
+	
 	//使用主模块模块
-	insmod(MAIN, function(err){
-		if(err)
+	insmod(MAIN, function(err) {
+		if (err)
 			throw err;
 	});
 
-} (global, function(__code, global, te, __opt){
+} (global, function(__code, global, te, __opt) {
   
   var tesla = te;
   
-  if(__opt){
+  if (__opt) {
     var __def = __opt.__def;
     var __name = __opt.__name;
     var include = __opt.include;
     var Class = __opt.Class;
-    var rest = eval(__code);
+    var rest = eval (__code);
     __code = __def = include = Class = undefined;
     return rest;
   }

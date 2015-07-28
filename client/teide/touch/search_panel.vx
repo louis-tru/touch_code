@@ -252,6 +252,10 @@
         display: none;
       }
       
+      .search_outer  * {
+        background: #f00;
+      }
+      
 		</style>
 	</head>
 

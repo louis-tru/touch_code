@@ -192,7 +192,7 @@ function read_key_value_item(self){
   var content = item.content;
   var mat = content.match(/([\w\$\_\-\.]+)|,/); // 查询key
   
-  if(!mat){
+  if (!mat) {
     throw error(self, 'Key Illegal characters');
   }
   

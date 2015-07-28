@@ -863,16 +863,25 @@ util.extend(exports, {
    * @static
    */
   create: function(o) {
-    if(typeof o != 'string'){
+    if (typeof o == 'string') {
+      return new Element(doc.createElement(o));
+    } else {
       return getEl(o);
     }
-    return query(find(html, [html]), o)[0] || null;
-  }
+  },
+    
+  /**
+    * 全局查找
+    */
+  find: function(str){
+    return query(find(html, [html]), str)[0] || null;
+  },
+  
 });
 
 exports.$ = exports.create;
 
-exports.htmlTag = function(tag){
+exports.htmlTag = function(tag) {
   return doc.createElement(tag || 'div');
 };
 

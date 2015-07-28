@@ -40,7 +40,7 @@ $class('tesla.gui.ViewDataSource', tesla.data.ServiceDataSource, {
       var top = (parent.te == 1 ? parent : parent.top);
       if (top) {
         var ds = top[id];
-        if (ds){
+        if (ds) {
           // TODO ? 
           // throw new Error('不能使用id:"' + id + '",已存在同名属性');
         }

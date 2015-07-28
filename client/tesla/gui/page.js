@@ -68,15 +68,15 @@ function create(pageid, name, message, history_id/*使用历史记录*/){
 	var top = old_page.top;
 
   old_page.remove();
-
-    //卸载旧包
+  
+  // 卸载旧包
 	var old = getModuleName(old_page.constructor.fullName);
 	var cur = getModuleName(name);
 	// TODO TEST ?
 	if(old_page.unmod && old && (!cur || old.module !== cur.module)) {
 		unmod(old.name);
 	}
-
+	
   //创建新模块
   var klass = tesla.get(name);
 	if(!klass)
@@ -86,7 +86,7 @@ function create(pageid, name, message, history_id/*使用历史记录*/){
   var historyData = old_page._historyData;
   var id = history_id || (tesla.sysid() + '');
 
-  message = message || {};
+  message = message || { };
 
   new_page._historyData = historyData;
   new_page._id = id;

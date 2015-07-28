@@ -19,3 +19,12 @@ version 1.1.0
 	10.添加代码折叠与展开
 	11.添加可打开外部文件功能
 	12.添加通过以Email的方式发送文件
+version 1.1.1
+	1.修复没有设置Email账号发送email崩溃问题
+	2.修复不能获取MyID问题
+version 1.1.2
+  1.禁止访问应用内部文档
+    Prohibit access to application internal documents
+  2.conf.keys文档格式错误导致功能失效的问题
+    conf.keys document format error leading to the problem of functional failure
+  

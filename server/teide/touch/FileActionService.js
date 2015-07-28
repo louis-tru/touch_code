@@ -416,27 +416,27 @@ Class('teide.touch.FileActionService', tesla.web.service.WebSocketService, {
 		  //content-disposition "attachment; filename=iscroll-master.zip"
 		  
 		  var disposition = data.res.headers['content-disposition'];
-		  if(disposition){
+		  if (disposition) {
 		    var mat = disposition.match(/filename=([^\;\&]+)/i);
-		    if(mat){
+		    if (mat) {
 		      header_name = mat[1];
 		    }
 		  }
 		  
-			if(self.mDownload){
+			if (self.mDownload) {
 				self.mDownload.request = data.req;
 				self.mDownload.response = data.res;
 			}
-			else{
+			else {
 				data.res.close(); // 关闭
 			}
 		});
-
+    
 		download.on('error', function(err) {
 			self.mDownload = null;
 		  cb(err);
 		});
-
+    
 		download.on('end', function(output) {
 		  
 			var cancel = !self.mDownload; // 是否取消
@@ -444,7 +444,7 @@ Class('teide.touch.FileActionService', tesla.web.service.WebSocketService, {
 			var rest = { cancel: cancel };
 			
       // 是否要改正名字,以响应头中的名字命名 ?
-      if(header_name){
+      if (header_name) {
         var ls = save.split('/');
         if(header_name != ls[ls.length - 1].replace(/_[\d]+/, '')){ // 不相似需要改名
           ls[ls.length - 1] = header_name;
@@ -467,7 +467,7 @@ Class('teide.touch.FileActionService', tesla.web.service.WebSocketService, {
       progress = progress || 0;
       
       var i = Math.round(progress * 100);
-      if(progress_int == i){
+      if (progress_int == i) {
         return;
       }
       progress_int = i;
@@ -719,8 +719,8 @@ Class('teide.touch.FileActionService', tesla.web.service.WebSocketService, {
 				var new_path 	= path + name;
         
         // 排除一些文件,这些文件不需要提供给用户
-        if(!/\.map(\/conf\.keys)?$/.test(new_path)){
-          if(teide.touch.APIService.is_exclude_file(new_path)){ 
+        if (!/\.map(\/conf\.keys)?$/.test(new_path)) {
+          if (teide.touch.APIService.is_exclude_file(new_path)) { 
   					continue;
   				}
         }
@@ -736,7 +736,7 @@ Class('teide.touch.FileActionService', tesla.web.service.WebSocketService, {
 					data.icon = get_icon(name);
 					leaf.push(data);
 				}
-				else{
+				else {
 				  data.icon = 'dir';
 				  dir.push(data);
 				}
